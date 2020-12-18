@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
@@ -26,7 +27,9 @@ func handler(c echo.Context) error {
 		fmt.Printf("handler ERR=%v\n", err)
 		return c.NoContent(200)
 	}
-	fmt.Printf("handleer m=%v\n", m)
+	fmt.Printf("handler m=%v\n", m)
+	time.Sleep(5 * time.Second)
+	fmt.Printf("handleer after sleep")
 	return c.NoContent(200)
 }
 
