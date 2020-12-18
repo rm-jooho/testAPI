@@ -13,7 +13,7 @@ func main() {
 	e.Use(middleware.CORSWithConfig(corsConfig))
 	e.POST("/liveApi/index.php/api/live_hook", handler)
 	e.GET("/", handleRoot)
-	err := e.Start(":8011")
+	err := e.Start(":80")
 	if err != nil {
 		panic(err)
 	}
