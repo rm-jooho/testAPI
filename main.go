@@ -21,7 +21,7 @@ func main() {
 
 func handler(c echo.Context) error {
 	m := echo.Map{}
-	err := c.Bind(m)
+	err := c.Bind(&m)
 	if err != nil {
 		fmt.Printf("handler ERR=%v\n", err)
 		return c.NoContent(200)
