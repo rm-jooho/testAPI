@@ -12,7 +12,7 @@ func main() {
 	corsConfig := middleware.DefaultCORSConfig
 	e.Use(middleware.CORSWithConfig(corsConfig))
 	e.POST("/liveApi/index.php/api/live_hook", handler)
-
+	e.GET("/", handleRoot)
 	err := e.Start(":8011")
 	if err != nil {
 		panic(err)
@@ -28,4 +28,10 @@ func handler(c echo.Context) error {
 	}
 	fmt.Printf("handleer m=%v\n", m)
 	return c.NoContent(200)
+}
+
+func handleRoot(c echo.Context) error {
+	m := echo.Map{}
+	m["result"] = true
+	return c.JSON(200, m)
 }
